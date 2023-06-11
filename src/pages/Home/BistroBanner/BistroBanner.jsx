@@ -1,4 +1,5 @@
 
+import banner from '../../../assets/'
 const BistroBanner = () => {
     return (
         <div>
