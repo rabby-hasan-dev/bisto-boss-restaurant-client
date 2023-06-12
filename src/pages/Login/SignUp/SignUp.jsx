@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link,  } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const {createUser, } = useContext(AuthContext);
-
+    const { createUser, updateUserProfiles } = useContext(AuthContext);
+    const navigate=useNavigate();
 
     const onSubmit = data => {
 
@@ -17,9 +17,18 @@ const SignUp = () => {
 
                 const loggedUser = result.user;
                 console.log(loggedUser);
-
-               
+                updateUserProfiles(data.name, data.photoURL)
+                    .then(() => {
+                        console.log('update user info')
+                    }).catch((error) => {
+                        console.log(error);
+                    });
+                    navigate('/')
+            }).catch(error=>{
+                console.log(error)
             })
+           
+           
     };
 
     return (
@@ -79,7 +88,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p><small>Already have an account <Link to="/login">Login</Link></small></p>
-                       
+
                     </div>
                 </div>
             </div>
