@@ -8,6 +8,8 @@ import useMenu from "../../../hooks/useMenu";
 import OrderTab from "../OrderTab/OrderTab";
 import { useParams } from "react-router-dom";
 
+// to do pagination implement here?
+
 const Order = () => {
     const categories = ["salad", "pizza", "soups", "dessert", "drinks"];
     const { category } = useParams();
@@ -15,7 +17,6 @@ const Order = () => {
     const initialIndex = categories.indexOf(category)
     const [tabIndex, setTabIndex] = useState(initialIndex);
     const [menu] = useMenu();
-    console.log(tabIndex);
  
     const dessert = menu.filter(item => item.category === "dessert");
     const salad = menu.filter(item => item.category === "salad");

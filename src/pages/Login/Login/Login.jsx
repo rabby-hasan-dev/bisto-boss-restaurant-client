@@ -9,12 +9,9 @@ const Login = () => {
 
     const [disabled, setDisabled] = useState(true);
     const { loginUser } = useContext(AuthContext);
-    const location=useLocation();
-    const navigate=useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
-  console.log(from)
-//   console.log(location);
-
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
@@ -50,7 +47,7 @@ const Login = () => {
 
 
         if (validateCaptcha(user_captcha_value) == true) {
-         
+
             setDisabled(false)
         }
 
@@ -90,7 +87,7 @@ const Login = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        
+
                                         <LoadCanvasTemplate />
 
                                     </label>
