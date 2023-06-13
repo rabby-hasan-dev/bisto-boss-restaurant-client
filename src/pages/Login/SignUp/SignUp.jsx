@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
@@ -13,13 +14,35 @@ const SignUp = () => {
     const onSubmit = data => {
 
         createUser(data.email, data.password)
-            .then(result => {
-
+            .then(result => {      
                 const loggedUser = result.user;
                 console.log(loggedUser);
+               
                 updateUserProfiles(data.name, data.photoURL)
                     .then(() => {
-                        console.log('update user info')
+                        const saveUsers={name:data.name, email:data.email,}
+                        fetch('http://localhost:5000/users',{
+                            method:'POST',
+                            headers:{
+                                'content-type':'application/json'
+                            },
+                            body:JSON.stringify(saveUsers)
+    
+                        })
+                        .then(res=>res.json())
+                        .then(data=>{
+                            if(data.insertedId){
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User SignUp Successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  })
+                            }
+                        })
+                      
                     }).catch((error) => {
                         console.log(error);
                     });
