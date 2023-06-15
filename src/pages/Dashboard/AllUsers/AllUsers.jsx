@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
-import { FaUsers } from 'react-icons/fa';
+import { FaTrashAlt, FaUserShield, FaUsers } from 'react-icons/fa';
 
 const AllUsers = () => {
 
@@ -9,8 +9,17 @@ const AllUsers = () => {
         return res.json();
     });
 
+
+    const handleMakeAdmin=(id)=>{
+        
+    }
+    const handleDelete = () => {
+
+    }
+
+
     return (
-        <div>
+        <div className='w-full'>
             <Helmet>
                 <title>Bistro Boss | Login</title>
             </Helmet>
@@ -36,8 +45,12 @@ const AllUsers = () => {
                                     <th>{index + 1}</th>
                                     <th>{user.name}</th>
                                     <td>{user.email}</td>
-                                    <td><FaUsers></FaUsers> </td>
-                                    <td><button className="btn btn-ghost bg-red-600 text-white">Ghost</button></td>
+                                    <td>
+                                        {
+                                            user.role === 'admin' ? 'admin' : <button onClick={()=>handleMakeAdmin(user._id)} className="btn btn-ghost bg-orange-400 text-white "><FaUserShield></FaUserShield></button>
+                                        }
+                                    </td>
+                                    <td><button onClick={()=>handleDelete()} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>
                                 </tr>)
                             }
 
