@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import UseCart from "../../../hooks/UseCart";
-import { FaBeer, FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 import Swal from "sweetalert2";
 
 
 const MyCart = () => {
-    const [cart,refetch] = UseCart();
+    const [cart, refetch] = UseCart();
     const total = cart.reduce((sum, item) => item.price + sum, 0);
 
     const handleDelete = (id) => {

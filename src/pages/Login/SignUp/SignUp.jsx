@@ -1,57 +1,58 @@
-import { useContext } from "react";
+
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, } from "react-router-dom";
-import { AuthContext } from "../../../Providers/AuthProvider";
+
 import Swal from "sweetalert2";
+import UseAuth from "../../../hooks/UseAuth";
 
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUserProfiles } = useContext(AuthContext);
-    const navigate=useNavigate();
+    const { createUser, updateUserProfiles } = UseAuth();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
 
         createUser(data.email, data.password)
-            .then(result => {      
+            .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-               
+
                 updateUserProfiles(data.name, data.photoURL)
                     .then(() => {
-                        const saveUsers={name:data.name, email:data.email,}
-                        fetch('http://localhost:5000/users',{
-                            method:'POST',
-                            headers:{
-                                'content-type':'application/json'
+                        const saveUsers = { name: data.name, email: data.email, }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
                             },
-                            body:JSON.stringify(saveUsers)
-    
-                        })
-                        .then(res=>res.json())
-                        .then(data=>{
-                            if(data.insertedId){
+                            body: JSON.stringify(saveUsers)
 
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User SignUp Successfully',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                  })
-                            }
                         })
-                      
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User SignUp Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            })
+
                     }).catch((error) => {
                         console.log(error);
                     });
-                    navigate('/')
-            }).catch(error=>{
+                navigate('/')
+            }).catch(error => {
                 console.log(error)
             })
-           
-           
+
+
     };
 
     return (

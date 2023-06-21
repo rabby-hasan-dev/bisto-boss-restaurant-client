@@ -4,7 +4,7 @@ import UseCart from "../hooks/UseCart";
 
 const Dashboard = () => {
     const [cart] = UseCart();
-    const isAdmin=true;
+    const isAdmin=false;
     return (
         <div>
             <div className="drawer lg:drawer-open">
