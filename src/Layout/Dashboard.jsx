@@ -1,10 +1,13 @@
 import { FaHome, FaShoppingCart, FaWallet, FaCalendarAlt, FaShoppingBag, FaToggleOn, FaUtensils, FaBook, FaUsers, FaBars, } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import UseCart from "../hooks/UseCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = UseCart();
-    const isAdmin=false;
+
+    // const isAdmin=false;
+    const [isAdmin]=useAdmin();
     return (
         <div>
             <div className="drawer lg:drawer-open">
