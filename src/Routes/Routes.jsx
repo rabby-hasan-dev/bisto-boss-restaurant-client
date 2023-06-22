@@ -10,56 +10,62 @@ import Secrate from "../pages/Shared/Secrate/Secrate";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddItem from "../pages/Dashboard/AddItem/AddItem";
+import AdminRoutes from "./AdminRoutes";
 
 const router = createBrowserRouter([
 
     {
-      path: "/",
-      element: <Main></Main>,
-      children:[
+        path: "/",
+        element: <Main></Main>,
+        children: [
 
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-            path:'menu',
-            element:<Menu></Menu>
-        },
-        
-        {
-            path:'order/:category',
-            element:<Order></Order>
-        },
-        {
-            path:'login',
-            element:<Login></Login>
-        },
-        {
-            path:'signUp',
-            element:<SignUp></SignUp>
-        },
-        {
-            path:'secret',
-            element:<PrivateRoute> <Secrate></Secrate> </PrivateRoute>
-        },
-      ]
+            {
+                path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: 'menu',
+                element: <Menu></Menu>
+            },
+
+            {
+                path: 'order/:category',
+                element: <Order></Order>
+            },
+            {
+                path: 'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'signUp',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: 'secret',
+                element: <PrivateRoute> <Secrate></Secrate> </PrivateRoute>
+            },
+        ]
     },
     {
-        path:'dashboard',
-        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-        children:[
+        path: 'dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
             {
-                path:'mycart',
-                element:<MyCart></MyCart>
+                path: 'mycart',
+                element: <MyCart></MyCart>
             },
             {
-                path:'allusers',
-                element:<AllUsers></AllUsers>
+                path: 'allusers',
+                element: <AllUsers></AllUsers>
             },
+            {
+                path: 'addItem',
+                element: <AdminRoutes><AddItem></AddItem></AdminRoutes>
+            }
         ]
     }
 
-  ]);
-  
-  export default router;
+]);
+
+export default router;
