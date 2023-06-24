@@ -47,8 +47,8 @@ const ManageItem = () => {
                 <title>Bistro Boss | My Cart</title>
             </Helmet>
             <SectionTitle
-                subHeading={'Hurry Up'}
-                heading={'manage all items'}
+                subHeading='Hurry Up'
+                heading='manage all items'
             ></SectionTitle>
 
             <div className="uppercase  font-semi-bold h-[60] flex justify-evenly items-center">
