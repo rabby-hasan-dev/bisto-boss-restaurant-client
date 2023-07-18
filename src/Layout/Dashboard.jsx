@@ -38,7 +38,7 @@ const Dashboard = () => {
                                 <li><NavLink to="/dashboard/userHome" ><FaHome></FaHome>Home</NavLink></li>
                                 <li><NavLink to="/dashboard/reservation" ><FaCalendarAlt></FaCalendarAlt>Reservation</NavLink></li>
 
-                                <li><NavLink to="/dashboard/history" ><FaWallet></FaWallet>Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/paymentHistory" ><FaWallet></FaWallet>Payment History</NavLink></li>
                                 <li>
                                     <NavLink to="/dashboard/mycart" ><FaShoppingCart></FaShoppingCart>My Cart <div className="badge badge-secondary">+{cart?.length || 0}</div></NavLink>
                                 </li>
