@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-full bg-[#D1A054] uppercase ">
                         {/* Sidebar content here */}
                         {
-                            isAdmin ? <>   <li><NavLink to="/dashboard/home" ><FaHome></FaHome>Admin Home</NavLink></li>
+                            isAdmin ? <>   <li><NavLink to="/dashboard/adminHome" ><FaHome></FaHome>Admin Home</NavLink></li>
 
                                 <li><NavLink to="/dashboard/addItem" > <FaUtensils></FaUtensils> Add an Items</NavLink></li>
 
@@ -35,7 +35,7 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/allUsers" > <FaUsers></FaUsers> All Users</NavLink>
                                 </li>
                             </> : <>
-                                <li><NavLink to="/dashboard/home" ><FaHome></FaHome>Home</NavLink></li>
+                                <li><NavLink to="/dashboard/userHome" ><FaHome></FaHome>Home</NavLink></li>
                                 <li><NavLink to="/dashboard/reservation" ><FaCalendarAlt></FaCalendarAlt>Reservation</NavLink></li>
 
                                 <li><NavLink to="/dashboard/history" ><FaWallet></FaWallet>Payment History</NavLink></li>
